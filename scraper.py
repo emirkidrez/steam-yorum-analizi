@@ -1,11 +1,11 @@
 import requests  # İnternetten veri çekmek için gereken requests kütüphanesini ekledik.
 import json  # Parametreleri JSON formatına çevirmek için json kütüphanesini ekledik.
-import time  # Steam'i yormamak için istekler arasında beklemek üzere time kütüphanesini ekledik.
+import time  # Steam'i yormamak için istekler arasında beklemek üzere time kütüphanesini ekledik. (Olası yasaklamalara karşı önlem olarak)
 import os # Klasör işlemleri için işletim sistemi modülünü ekledik.
 
 def get_steam_reviews(app_id, max_reviews=200):  # İncelemeleri çekecek ana fonksiyonun kodunu yazdık.
-    url = "https://api.steampowered.com/IUserReviewsService/GetAppReviews/v1/"  # Eski endpoint kapandığı için Steam'in yeni resmi API adresini ayarladık.
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0'}  # İsteğin tarayıcıdan geliyormuş gibi görünmesi için kimlik bilgisini ekledik.
+    url = "https://api.steampowered.com/IUserReviewsService/GetAppReviews/v1/"  # Eski endpoint kapandığı için Steam'in yeni resmi API adresini ayarladık. Eskisinde hata veriyordu.
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0'}  # İsteğin tarayıcıdan geliyormuş gibi görünmesi için kimlik bilgisini ekledik. Geçmişte alınan hatalara karşı önlem.
     tum_incelemeler = []  # Çektiğimiz tüm incelemeleri biriktireceğimiz boş listeyi oluşturduk.
     cursor = "*"  # İlk sayfa için başlangıç imlecini "*" olarak ayarladık.
 
